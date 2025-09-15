@@ -112,11 +112,11 @@
       "description": "V4.0 - 3.83GB - 8-bit quantization, highest quality",
       "download_path": "MiniCPM-v-4"
     },
-    "Huihui-MiniCPM-V-4.5 (Q8_0)": {
+    "MiniCPM-V-4.5-abliterated (Q8_0)": {
       "name": "huihui-ai/Huihui-MiniCPM-V-4_5-abliterated/GGUF/ggml-model-Q8_0.gguf",
-      "mmproj": "openbmb/MiniCPM-V-4_5-gguf/mmproj-model-f16.gguf",
-      "description": "V4.5 abliteration (uncensored) - 6.72GB - 8-bit quantization, high quality without refusals",
-      "download_path": "Huihui-MiniCPM-V-4_5-abliterated"
+      "mmproj": "huihui-ai/Huihui-MiniCPM-V-4_5-abliterated/GGUF/mmproj-model-f16.gguf",
+      "description": "Abliterated V4.5 - ~8.7GB - 8-bit quant (high precision, uncensored)",
+      "download_path": "MiniCPM-v-4_5-abliterated-Q8"
     }
   }
 }

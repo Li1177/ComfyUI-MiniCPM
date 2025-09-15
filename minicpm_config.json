@@ -100,6 +100,12 @@
       "description": "V4.0 - 2.51GB - 5-bit K-quants small",
       "download_path": "MiniCPM-v-4"
     },
+    "MiniCPM-V-4.5-abliterated (Q5_K_S)": {
+      "name": "huihui-ai/Huihui-MiniCPM-V-4_5-abliterated/GGUF/ggml-model-Q5_K_S.gguf",
+      "mmproj": "huihui-ai/Huihui-MiniCPM-V-4_5-abliterated/GGUF/mmproj-model-f16.gguf",
+      "description": "Abliterated V4.5 - ~6.7GB - 5-bit quant (balanced, uncensored)",
+      "download_path": "MiniCPM-v-4_5-abliterated-Q5"
+    },
     "MiniCPM-V-4 (Q6_K)": {
       "name": "openbmb/MiniCPM-V-4-gguf/ggml-model-Q6_K.gguf",
       "mmproj": "openbmb/MiniCPM-V-4-gguf/mmproj-model-f16.gguf",

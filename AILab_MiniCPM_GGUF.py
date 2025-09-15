@@ -57,7 +57,14 @@ class MiniCPM_GGUF_Models:
 
             if "/" not in model:
                 raise ValueError("Invalid model path")
-            repo_path, filename = model.rsplit("/", 1)
+            parts = model.rsplit("/", 2)  # 拆分成 [repo_id, subpath (可选), filename]
+            if len(parts) == 2:
+                repo_path = parts[0]
+                full_filename = parts[1]
+            else:
+                repo_path = parts[0]
+                subpath = parts[1] + "/"
+                full_filename = subpath + parts[2]
 
             model_config = None
             model_key = None
@@ -76,13 +83,13 @@ class MiniCPM_GGUF_Models:
                 download_subdir = llm_models_dir
             download_subdir.mkdir(parents=True, exist_ok=True)
 
-            model_path = download_subdir / filename
+            model_path = download_subdir / Path(full_filename).name
             if not model_path.exists():
-                print(f"Downloading GGUF model: {filename} (large file, please wait...)")
+                print(f"Downloading GGUF model: {full_filename} (large file, please wait...)")
                 try:
                     model_path = Path(hf_hub_download(
                         repo_id=repo_path,
-                        filename=filename,
+                        filename=full_filename,
                         local_dir=str(download_subdir)
                     )).resolve()
                 except Exception as e:
@@ -99,11 +106,18 @@ class MiniCPM_GGUF_Models:
             mmproj_local = download_subdir / Path(mmproj_filename).name
             if not mmproj_local.exists():
                 print(f"Downloading vision model: {Path(mmproj_filename).name}...")
-                repo_path, filename = mmproj_filename.rsplit("/", 1)
+                parts = mmproj_filename.rsplit("/", 2)
+                if len(parts) == 2:
+                    mm_repo_path = parts[0]
+                    mm_full_filename = parts[1]
+                else:
+                    mm_repo_path = parts[0]
+                    mm_subpath = parts[1] + "/"
+                    mm_full_filename = mm_subpath + parts[2]
                 try:
                     mmproj_local = Path(hf_hub_download(
-                        repo_id=repo_path,
-                        filename=filename,
+                        repo_id=mm_repo_path,
+                        filename=mm_full_filename,
                         local_dir=str(download_subdir)
                     )).resolve()
                 except Exception as e:
